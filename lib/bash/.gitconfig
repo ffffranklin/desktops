@@ -1,0 +1,123 @@
+; @author ffffranklin
+; Many aliases came from
+; http://haacked.com/archive/2014/07/28/github-flow-aliases/
+
+[push]
+
+  # https://git-scm.com/docs/git-config#git-config-pushdefault
+  default = simple
+  # Make `git push` push relevant annotated tags when pushing branches out.
+  followTags = true
+
+[log]
+
+# inspired by https://stackoverflow.com/a/9463536/1570065
+  date = relative
+
+[format]
+
+# inspired by https://stackoverflow.com/a/9463536/1570065
+  pretty = format:%h %Cblue%ad%Creset %ae %Cgreen%s%Creset
+
+[alias]
+
+  s = status -s
+  lg = log --oneline --decorate --all --graph
+  lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+  ll = log --oneline --graph --decorate
+  ca = commit -am
+# inspired by http://haacked.com/archive/2014/07/28/github-flow-aliases/
+  co = checkout
+  ec = config --global -e
+  up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+  cob = checkout -b
+  cm = !git add -A && git commit -m
+  po = "!f() { git push --set-upstream origin $(git branch | grep \\* | cut -d ' ' -f2); }; f"
+  save = !git add -A && git commit -m 'SAVEPOINT'
+  wip = !git add -u && git commit -m "WIP" 
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+  bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master}; }; f"
+# inspired by http://stackoverflow.com/a/7929499/1570065
+# todo: test on a branch with no local master
+# example 
+#   $ git brebase
+#   $ git brebase gh-pages upstream
+  brebase = "!f() { git fetch ${2-origin} && git rebase ${1-master}@{upstream}; }; f"
+  bmerge = "!f() { git fetch ${2-origin} && git merge --no-ff ${1-master}@{upstream}; }; f"
+# get diff file names and file count
+  dfiles = "!f() { git diff ${1-master} --name-only; }; f"
+  dcount = "!f() { git diff ${1-master} --name-only | wc -l; }; f"
+  dsf = "!f() { [ -z "${GIT_PREFIX}" ] || cd "${GIT_PREFIX}" && git diff --color "${@}" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+  drelease = "!f() { git log --left-right --graph --cherry-pick --pretty=format:\"%h%x09%an%x09%ad%x09%s\" origin/r$1...r$2; }; f"
+# inspired by https://gist.github.com/gnarf/5406589
+#   Easily checkout local copies of pull requests from remotes:
+#     * $git pr 4 - creates local branch pr/4 from the github origin remote and checks it out
+#     * $git pr 4 upstream - creates local branch pr/4 from upstream remote and checks it out
+#     * $git pr-clean - removes all pr/* branches from your local repo
+#     * $git spr - Same as git pr command, but for bitbucket/stash remotes
+# for github remotes
+  pr  = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+  pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+# for bitbucket/stash remotes
+  spr  = "!f() { git fetch -fu ${2:-origin} refs/pull-requests/$1/from:pr/$1 && git checkout pr/$1; }; f"
+# inspired by https://stackoverflow.com/a/10874862/1570065
+  conflicts = diff --name-only --diff-filter=U
+  recent = "!git fetch --prune && git for-each-ref --sort='-committerdate' refs/remotes/origin/ --format='%(committerdate:iso) %(objectname:short) %(refname:short)'"
+
+[merge]
+
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+[apply]
+
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[core]
+
+	# Use custom `.gitignore` and `.gitattributes`
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+	# Make `git rebase` safer on macOS
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	precomposeunicode = false
+
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+	untrackedCache = true
+
+
+# URL shorthands
+
+[url "git@github.com:"]
+
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+
+	insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+
+	insteadOf = "gist:"
