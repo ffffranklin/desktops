@@ -102,5 +102,8 @@ brew install rbenv ruby-build
 # Diff so fancy (see gitconfig)
 brew install diff-so-fancy
 
+# Install Aerial Screensaver
+brew cask install aerial
+
 # Remove outdated versions from the cellar.
 brew cleanup
