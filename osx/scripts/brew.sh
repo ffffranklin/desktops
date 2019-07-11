@@ -102,6 +102,9 @@ brew install rbenv ruby-build
 # Diff so fancy (see gitconfig)
 brew install diff-so-fancy
 
+# Image magic (useful for strippign exif data from photos)
+brew install imagemagick
+
 # Install Aerial Screensaver
 brew cask install aerial
 
