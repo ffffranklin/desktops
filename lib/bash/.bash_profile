@@ -4,6 +4,15 @@ export PATH="$HOME/bin:$PATH";
 # Add tab completion for many Bash commands
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 	source "$(brew --prefix)/share/bash-completion/bash_completion";
+
+	# Add tab completion for git (https://superuser.com/a/300298)
+	if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+		source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash";
+	fi
+
+	if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+		source `brew --prefix`/etc/bash_completion.d/git-prompt.sh
+	fi
 elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
