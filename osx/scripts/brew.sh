@@ -105,6 +105,9 @@ brew install diff-so-fancy
 # Image magic (useful for strippign exif data from photos)
 brew install imagemagick
 
+# Exif (view photo info)
+brew install exif
+
 # Install Aerial Screensaver
 brew cask install aerial
 
