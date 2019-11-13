@@ -48,7 +48,7 @@
   brebase = "!f() { git fetch ${2-origin} && git rebase ${1-master}@{upstream}; }; f"
   bmerge = "!f() { git fetch ${2-origin} && git merge --no-ff ${1-master}@{upstream}; }; f"
 # get diff file names and file count
-  dfiles = "!f() { git diff ${1-master} --name-only; }; f"
+  dfiles = "!f() { git diff ${1-master} --name-status; }; f"
   dcount = "!f() { git diff ${1-master} --name-only | wc -l; }; f"
   dsf = "!f() { [ -z "${GIT_PREFIX}" ] || cd "${GIT_PREFIX}" && git diff --color "${@}" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
   drelease = "!f() { git log --left-right --graph --cherry-pick --pretty=format:\"%h%x09%an%x09%ad%x09%s\" origin/r$1...r$2; }; f"
