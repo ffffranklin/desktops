@@ -96,6 +96,10 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
+# Wordnet (useful for word discovery)
+brew cask install xquartz
+brew install wordnet
+
 # Ruby Environment
 brew install rbenv ruby-build
 
