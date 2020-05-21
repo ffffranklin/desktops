@@ -183,5 +183,10 @@ function gbrd() {
 
 # define word with wordnet
 function define() {
+  wn "$@" -over;
+}
+
+# find syntonyms word with wordnet
+function syn() {
   wn "$@" -syns{n,v,a,r};
 }
