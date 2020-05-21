@@ -180,3 +180,8 @@ function gbrd() {
     git branch | grep -v "master" | xargs git branch -D;
   fi
 }
+
+# define word with wordnet
+function define() {
+  wn "$@" -syns{n,v,a,r};
+}
