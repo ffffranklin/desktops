@@ -115,5 +115,12 @@ brew install exif
 # Install Aerial Screensaver
 brew cask install aerial
 
+# Virtual box (for Vagrant)
+brew cask install virtualbox
+
+# Vagrant (for os emulation)
+brew cask install vagrant
+brew cask install vagrant-manager
+
 # Remove outdated versions from the cellar.
 brew cleanup
