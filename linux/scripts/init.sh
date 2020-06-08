@@ -2,7 +2,7 @@
 
 # Get path to this script
 # @inspired by https://stackoverflow.com/questions/4774054/reliable-way-for-a-bash-script-to-get-the-full-path-to-itself#comment49674774_11114547
-SCRIPT_PATH=$(dirname "$(realpath -s "${BASH_SOURCE[0]}")")
+SCRIPT_PATH=$(dirname "$(realpath "${BASH_SOURCE[0]}")")
 
 # Ask for the administrator password upfront
 sudo -v
