@@ -82,6 +82,9 @@ Vagrant.configure("2") do |config|
     # Install git
     pkg install -y git rsync
 
+    # Install define deps
+    pkg install -y wordnet aspell en-aspell
+
     # Prepare ssh for github
     mkdir -p ~/.ssh
     chmod 700 ~/.ssh
