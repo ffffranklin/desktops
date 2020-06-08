@@ -14,6 +14,11 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "generic/freebsd11"
 
+  # Link ssh agent to host agent
+  # - I would prefer not to do this but I dont want to store the github token as
+  #   a plain text file and use the ssh key
+  config.ssh.forward_agent = true
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -75,6 +80,14 @@ Vagrant.configure("2") do |config|
 
     # Install git
     pkg install -y git rsync
+
+    # Prepare ssh for github
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
+
+    # Prepare to connect for github
+    ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+    ssh -T git@github.com
 
     echo "==> Installing projects..."
 
