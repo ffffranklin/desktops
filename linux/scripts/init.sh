@@ -10,6 +10,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Dependencies                                                                #
 ###############################################################################
 
+echo "==> Setting up Vim dependencies…"
+
 # Init vim backup file directories
 mkdir -p ~/.vim/backups
 mkdir -p ~/.vim/swaps
