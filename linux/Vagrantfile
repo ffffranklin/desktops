@@ -90,3 +90,4 @@ Vagrant.configure("2") do |config|
       chown -R vagrant /home/vagrant/Projects/desktops
     fi
   SHELL
+end
