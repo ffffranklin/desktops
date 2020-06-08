@@ -183,10 +183,30 @@ function gbrd() {
 
 # define word with wordnet
 function define() {
-  wn "$@" -over;
+  result=$(wn "$@" -over);
+
+  if [[ -n $result ]]
+  then
+    # print result
+    wn "$@" -over;
+  else
+    # offer suggestions
+    echo "Did you mean?"
+    echo "$@" | aspell pipe
+  fi
 }
 
 # find syntonyms word with wordnet
 function syn() {
-  wn "$@" -syns{n,v,a,r};
+  result=$(wn "$@" -syns{n,v,a,r});
+
+  if [[ -n $result ]]
+  then
+    # print result
+    wn "$@" -syns{n,v,a,r};
+  else
+    # offer suggestions
+    echo "Did you mean?"
+    echo "$@" | aspell pipe
+  fi
 }
