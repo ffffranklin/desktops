@@ -82,6 +82,10 @@ Vagrant.configure("2") do |config|
     mkdir -p /home/vagrant/Projects
 
     # Download desktops project from github
-    [ -d /home/vagrant/Projects/desktops ] && echo "desktops exists, skipping..." || git clone https://github.com/ffffranklin/desktops.git /home/vagrant/Projects/desktops
-  SHELL
-end
+    if [[ -d /home/vagrant/Projects/desktops ]]
+    then
+      echo "desktops exists, skipping..."
+    else
+      git clone https://github.com/ffffranklin/desktops.git /home/vagrant/Projects/desktops
+      chown -R vagrant /home/vagrant/Projects/desktops
+    fi
