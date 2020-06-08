@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   # Link ssh agent to host agent
   # - I would prefer not to do this but I dont want to store the github token as
   #   a plain text file and use the ssh key
-  # - @inspiredby https://stefanscherer.github.io/access-private-github-repos-in-vagrant-up/ 
+  # - @inspiredby https://stefanscherer.github.io/access-private-github-repos-in-vagrant-up/
   config.ssh.forward_agent = true
 
   # Disable automatic box update checking. If you disable this, then
@@ -58,7 +58,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = true
- 
+
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
   end
@@ -76,14 +76,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     echo "==> Installing packages..."
 
-    # Force update port binaries
-    pkg update -f
+    source ./pkg.sh
 
-    # Install git
-    pkg install -y git rsync
-
-    # Install define deps
-    pkg install -y wordnet aspell en-aspell
+    echo "==> Installing projects..."
 
     # Prepare ssh for github
     mkdir -p ~/.ssh
@@ -92,8 +87,6 @@ Vagrant.configure("2") do |config|
     # Prepare to connect for github
     ssh-keyscan -H github.com >> ~/.ssh/known_hosts
     ssh -T git@github.com
-
-    echo "==> Installing projects..."
 
     # Create projects dir
     mkdir -p /home/vagrant/Projects
@@ -106,5 +99,8 @@ Vagrant.configure("2") do |config|
       git clone git@github.com:ffffranklin/desktops.git /home/vagrant/Projects/desktops
       chown -R vagrant /home/vagrant/Projects/desktops
     fi
+
+    echo "==> Setting up bash..."
+    source ../lib/bash/bootstrap.sh
   SHELL
 end
