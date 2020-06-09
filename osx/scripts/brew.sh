@@ -120,7 +120,6 @@ brew cask install virtualbox
 
 # Vagrant (for os emulation)
 brew cask install vagrant
-brew cask install vagrant-manager
 
 # Remove outdated versions from the cellar.
 brew cleanup
