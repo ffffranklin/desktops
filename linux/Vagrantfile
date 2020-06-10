@@ -6,6 +6,7 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+  # @inspired by https://stackoverflow.com/questions/17845637/how-to-change-vagrant-default-machine-name
   box_name = "edge"
 
   # The most common configuration options are documented and commented below.
