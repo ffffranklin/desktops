@@ -6,6 +6,8 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
+  box_name = "edge"
+
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
@@ -13,6 +15,12 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "generic/freebsd11"
+
+  # Declare vagrant box name
+  config.vm.define box_name
+
+  # Declare vagrant hostname
+  config.vm.hostname = box_name
 
   # Link ssh agent to host agent
   # - I would prefer not to do this but I dont want to store the github token as
@@ -63,6 +71,9 @@ Vagrant.configure("2") do |config|
 
     # Customize the amount of memory on the VM:
     vb.memory = "1024"
+
+    # Set ui name
+    vb.name = box_name
   end
   #
   # View the documentation for the provider you are using for more
