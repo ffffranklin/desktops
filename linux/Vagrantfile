@@ -77,13 +77,13 @@ Vagrant.configure("2") do |config|
   # SHELL
   config.vm.provision "setup", type: "shell", run: "never" do |s|
     s.inline = <<-SHELL
-      /vagrant/linux/scripts/setup.sh
+      sudo -u vagrant /vagrant/linux/scripts/setup.sh
     SHELL
   end
 
   config.vm.provision "update", type: "shell", run: "never" do |s|
     s.inline = <<-SHELL
-      /vagrant/linux/scripts/update.sh
+      sudo -u vagrant /vagrant/linux/scripts/update.sh
     SHELL
   end
 

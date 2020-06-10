@@ -7,4 +7,5 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+vagrant destroy --force
 vagrant up --provision-with setup

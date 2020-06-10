@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Force update port binaries
-pkg update -f
+sudo pkg update -f
 
 # Install git
-pkg install -y git rsync
+sudo pkg install -y git rsync
 
 # Install define deps
-pkg install -y wordnet aspell en-aspell
+sudo pkg install -y wordnet aspell en-aspell

@@ -16,4 +16,4 @@ scripts/pkg.sh
 
 echo "==> Setting up bash…"
 
-../lib/bash/bootstrap.sh
+../lib/bash/bootstrap.sh --force
