@@ -99,14 +99,15 @@ Vagrant.configure("2") do |config|
 
     # Configure X11
     sudo Xorg -configure
-    sudo mkdir --parents /etc/X11; sudo cp /root/xorg.conf.new $_/xorg.conf
+    sudo mkdir --parents /etc/X11; sudo cp /root/xorg.conf.new /etc/X11/xorg.conf
 
     # Fix input controls and configure evdev driver
-    grep -qF -- 'kern.evdev.rcpt_mask=6' /etc/rc.conf || sudo echo '\n# Fix input devices like mouse - inserted by provision script\nkern.evdev.rcpt_mask=6' >> /etc/rc.conf
+    grep -qF -- 'kern.evdev.rcpt_mask=6' /etc/sysctl.conf || sudo echo '\n# Fix input devices like mouse - inserted by provision script\nkern.evdev.rcpt_mask=6' >> /etc/sysctl.conf
 
     # Configure XFCE
     # - @inspiredby https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x11-wm.html
     grep -qF -- 'dbus_enable="YES"' /etc/rc.conf || sudo echo '\n# XFCE uses D-Bus for a message bus - inserted by provision script\ndbus_enable="YES"' >> /etc/rc.conf
+    touch /home/vagrant/.xinitrc
     grep -qF -- '. /usr/local/etc/xdg/xfce4/xinitrc' /home/vagrant/.xinitrc || sudo echo '\n# XFCE - inserted by provision script\n. /usr/local/etc/xdg/xfce4/xinitrc' >> /home/vagrant/.xinitrc
 
     # Install browser
