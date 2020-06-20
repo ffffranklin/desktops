@@ -86,6 +86,9 @@ Vagrant.configure("2") do |config|
     # Install guest additions
     sudo pkg install -y virtualbox-ose-additions
 
+    # Install input drivers for keyboard and mouse
+    sudo pkg install -y xf86-input-libinput xf86-input-evdev
+
     # Install git
     sudo pkg install -y git rsync
 
@@ -97,6 +100,9 @@ Vagrant.configure("2") do |config|
     # Configure X11
     sudo Xorg -configure
     sudo mkdir --parents /etc/X11; sudo cp /root/xorg.conf.new $_/xorg.conf
+
+    # Fix input controls and configure evdev driver
+    grep -qF -- 'kern.evdev.rcpt_mask=6' /etc/rc.conf || sudo echo '\n# Fix input devices like mouse - inserted by provision script\nkern.evdev.rcpt_mask=6' >> /etc/rc.conf
 
     # Configure XFCE
     # - @inspiredby https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x11-wm.html
