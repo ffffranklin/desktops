@@ -99,7 +99,7 @@ Vagrant.configure("2") do |config|
 
     # Configure X11
     sudo Xorg -configure
-    sudo mkdir --parents /etc/X11; sudo cp /root/xorg.conf.new /etc/X11/xorg.conf
+    sudo mkdir /etc/X11; sudo cp /root/xorg.conf.new /etc/X11/xorg.conf
 
     # Fix input controls and configure evdev driver
     grep -qF -- 'kern.evdev.rcpt_mask=6' /etc/sysctl.conf || sudo echo '\n# Fix input devices like mouse - inserted by provision script\nkern.evdev.rcpt_mask=6' >> /etc/sysctl.conf
