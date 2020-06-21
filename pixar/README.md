@@ -1,3 +1,5 @@
+# pixar (htpc)
+
 ### FAQ
 
 How to restart xorg or what ever window manager
