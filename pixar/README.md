@@ -1,3 +1,5 @@
+# pixar (htpc)
+
 ### Getting Started
 
 Bundle and add `mouse` locally

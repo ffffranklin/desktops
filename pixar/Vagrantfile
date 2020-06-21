@@ -7,7 +7,7 @@
 # you're doing.
 Vagrant.configure("2") do |config|
   # @inspired by https://stackoverflow.com/questions/17845637/how-to-change-vagrant-default-machine-name
-  box_name = "mouse"
+  box_name = "pixar"
 
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -15,17 +15,13 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/freebsd12"
+  config.vm.box = "mouse"
 
   # Declare vagrant box name
   config.vm.define box_name
 
   # Declare vagrant hostname
   config.vm.hostname = box_name
-
-  # Avoid private/pub key conflicts down the line
-  # @inspiredby https://github.com/hashicorp/vagrant/issues/5186#
-  config.ssh.insert_key = false
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -62,16 +58,16 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
+   config.vm.provider "virtualbox" do |vb|
+     # Display the VirtualBox GUI when booting the machine
+     vb.gui = true
 
-    # Customize the amount of memory on the VM:
-    vb.memory = "1024"
+     # Customize the amount of memory on the VM:
+     vb.memory = "1024"
 
-    # Set ui name
-    vb.name = box_name
-  end
+     # Set ui name
+     vb.name = box_name
+   end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -79,43 +75,8 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-    # Update FreeBSD
-    sudo freebsd-update fetch && sudo freebsd-update install
-
-    # Force update port binaries
-    sudo pkg update -f
-
-    # Install guest additions
-    sudo pkg install -y virtualbox-ose-additions
-
-    # Install input drivers for keyboard and mouse
-    sudo pkg install -y xf86-input-libinput xf86-input-evdev
-
-    # Install git
-    sudo pkg install -y git rsync
-
-    # Install x
-    # - seem to need xterm to run $ startx [something]
-    # - xterm seems to need xauth
-    sudo pkg install -y xinit xorg-server xterm xauth xfce
-
-    # Configure X11
-    sudo Xorg -configure
-    sudo mkdir /etc/X11; sudo cp /root/xorg.conf.new /etc/X11/xorg.conf
-
-    # Fix input controls and configure evdev driver
-    grep -qF -- 'kern.evdev.rcpt_mask=6' /etc/sysctl.conf || sudo echo '\n# Fix input devices like mouse - inserted by provision script\nkern.evdev.rcpt_mask=6' >> /etc/sysctl.conf
-
-    # Configure XFCE
-    # - @inspiredby https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x11-wm.html
-    grep -qF -- 'dbus_enable="YES"' /etc/rc.conf || sudo echo '\n# XFCE uses D-Bus for a message bus - inserted by provision script\ndbus_enable="YES"' >> /etc/rc.conf
-    touch /home/vagrant/.xinitrc
-    grep -qF -- '. /usr/local/etc/xdg/xfce4/xinitrc' /home/vagrant/.xinitrc || sudo echo '\n# XFCE - inserted by provision script\n. /usr/local/etc/xdg/xfce4/xinitrc' >> /home/vagrant/.xinitrc
-
-    # Install browser
-    sudo pkg install -y firefox
-
-    sudo shutdown -r now
-  SHELL
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
 end
