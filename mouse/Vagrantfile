@@ -23,8 +23,6 @@ Vagrant.configure("2") do |config|
   # Declare vagrant hostname
   config.vm.hostname = box_name
 
-  config.vm.base_mac = "8DC300AA98E1"
-
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
