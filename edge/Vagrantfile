@@ -99,7 +99,7 @@ Vagrant.configure("2") do |config|
     SHELL
   end
 
-  config.vm.provision "shell", inline: <<-SHELL
+  config.vm.provision "projects", type: "shell", inline: <<-SHELL
     echo "==> Installing projects..."
 
     # Prepare ssh for github
