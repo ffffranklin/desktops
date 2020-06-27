@@ -97,6 +97,7 @@ Vagrant.configure("2") do |config|
 
       # Set dark theme
       xfconf-query --channel=xsettings --property=/Net/ThemeName --set=Greybird-dark
+      xfconf-query --channel=xfwm4 --property=/general/theme --set=Greybird-dark
     SHELL
   end
 
