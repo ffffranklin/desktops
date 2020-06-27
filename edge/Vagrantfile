@@ -92,6 +92,11 @@ Vagrant.configure("2") do |config|
   config.vm.provision "setup", type: "shell", run: "never" do |s|
     s.inline = <<-SHELL
       sudo -u vagrant /vagrant/linux/scripts/setup.sh
+
+      # SETUP GUI
+
+      # Set dark theme
+      xfconf-query --channel=xsettings --property=/Net/ThemeName --set=Greybird-dark
     SHELL
   end
 
