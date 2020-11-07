@@ -12,3 +12,9 @@ To update there after run
 $ bin/update
 ```
 
+### FAQ
+
+How to start XFCE window manager
+```shell script
+$ startx
+```
