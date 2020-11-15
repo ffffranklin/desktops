@@ -53,7 +53,7 @@ brew install sfnt2woff
 brew install sfnt2woff-zopfli
 brew install woff2
 
-# Install image minification tools
+# Install image minification tools; see https://net2.com/how-to-compress-jpeg-or-png-images-in-linux-using-the-terminal/
 brew install optipng
 brew install jpegoptim
 
