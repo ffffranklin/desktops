@@ -95,9 +95,28 @@ Vagrant.configure("2") do |config|
 
       # SETUP GUI
 
-      # Set dark theme
-      xfconf-query --channel=xsettings --property=/Net/ThemeName --set=Greybird-dark
-      xfconf-query --channel=xfwm4 --property=/general/theme --set=Greybird-dark
+      mkdir /home/vagrant/Desktop
+      touch /home/vagrant/Desktop/make_pretty.sh
+      cat << EOF > /home/vagrant/Desktop/make_pretty.sh
+#!/bin/bash
+
+# Set dark theme
+xfconf-query --channel=xsettings --property=/Net/ThemeName --set=Greybird-dark
+xfconf-query --channel=xfwm4 --property=/general/theme --set=Greybird-dark
+EOF
+      chmod +x /home/vagrant/Desktop/make_pretty.sh
+      touch /home/vagrant/Desktop/make_pretty.desktop
+      cat << EOF > /home/vagrant/Desktop/make_pretty.desktop
+[Desktop Entry]
+Encoding=UTF-8
+Name=Make Pretty
+Comment=Bootstrap XFCE UI
+Exec=/home/vagrant/Desktop/make_pretty.sh
+Icon=/home/vagrant/Desktop/make_pretty.gif
+Type=Application
+Terminal=true
+EOF
+      chmod +x /home/vagrant/Desktop/make_pretty.desktop
     SHELL
   end
 
