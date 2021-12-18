@@ -126,5 +126,8 @@ brew cask install virtualbox
 # Vagrant (for os emulation)
 brew cask install vagrant
 
+# Add tmux
+brew install tmux
+
 # Remove outdated versions from the cellar.
 brew cleanup
