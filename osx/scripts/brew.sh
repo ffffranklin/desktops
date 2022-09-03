@@ -108,6 +108,9 @@ brew install wordnet
 # Ruby Environment
 brew install rbenv ruby-build
 
+# Node Environment
+brew install nvm
+
 # Diff so fancy (see gitconfig)
 brew install diff-so-fancy
 
