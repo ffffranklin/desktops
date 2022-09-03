@@ -20,8 +20,8 @@ ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+# Install GNU `sed`, overwriting the built-in `sed`. (doesnt work with options)
+# brew install gnu-sed --with-default-names
 # Install Bash 4.
 brew install bash
 brew install bash-completion2
@@ -39,8 +39,9 @@ brew install wget
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
-# Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+# Install more recent versions of some macOS tools. 
+# (doesnt work with options)
+# brew install vim --with-override-system-vi
 brew install grep
 brew install openssh
 brew install screen
@@ -88,7 +89,6 @@ brew install ack
 #brew install exiv2
 brew install git
 brew install git-lfs
-brew install imagemagick --with-webp
 brew install lua
 brew install lynx
 brew install p7zip
@@ -102,7 +102,7 @@ brew install vbindiff
 brew install zopfli
 
 # Wordnet (useful for word discovery)
-brew cask install xquartz
+brew install xquartz --cask
 brew install wordnet
 
 # Ruby Environment
@@ -118,13 +118,13 @@ brew install imagemagick
 brew install exif
 
 # Install Aerial Screensaver
-brew cask install aerial
+brew install aerial --cask
 
 # Virtual box (for Vagrant)
-brew cask install virtualbox
+brew install virtualbox --cask
 
 # Vagrant (for os emulation)
-brew cask install vagrant
+brew install vagrant --cask
 
 # Add tmux
 brew install tmux
