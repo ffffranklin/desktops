@@ -22,7 +22,9 @@
 [alias]
 
   s = status -s
+  lf = log --format=fuller
   lg = log --oneline --decorate --all --graph
+  lm = log --format=medium
   lp = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
   ll = log --oneline --graph --decorate
   ca = commit -am
