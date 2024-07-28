@@ -71,17 +71,17 @@
 # inspired by 
 # - https://stackoverflow.com/questions/76189463/how-to-add-custom-prefix-to-your-git-commit-messages-using-git-aliases
 # - https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/
-  cafeat = !sh -c 'git add -A && git commit -m \"-feat- : $1\"' -
-  cafix = !sh -c 'git add -A && git commit -m \"-fix- : $1\"' -
-  cachore = !sh -c 'git add -A && git commit -m \"-chore- : $1\"' -
-  caref = !sh -c 'git add -A && git commit -m \"-refactor- : $1\"' -
-  cadocs = !sh -c 'git add -A && git commit -m \"-docs- : $1\"' -
-  castyle = !sh -c 'git add -A && git commit -m \"-style- : $1\"' -
-  catest = !sh -c 'git add -A && git commit -m \"-test- : $1\"' -
-  caperf = !sh -c 'git add -A && git commit -m \"-perf- : $1\"' -
-  caci = !sh -c 'git add -A && git commit -m \"-ci- : $1\"' -
-  cabuild = !sh -c 'git add -A && git commit -m \"-build- : $1\"' -
-  carevert = !sh -c 'git add -A && git commit -m \"-revert- : $1\"' -
+  cafeat = !sh -c 'git add -A && git commit -m \"✨ $1\"' -
+  cafix = !sh -c 'git add -A && git commit -m \"🐛 $1\"' -
+  cachore = !sh -c 'git add -A && git commit -m \"👷 $1\"' -
+  caref = !sh -c 'git add -A && git commit -m \"♻️  $1\"' -
+  cadocs = !sh -c 'git add -A && git commit -m \"📝 $1\"' -
+  castyle = !sh -c 'git add -A && git commit -m \"💄 $1\"' -
+  catest = !sh -c 'git add -A && git commit -m \"✅ $1\"' -
+  caperf = !sh -c 'git add -A && git commit -m \"⚡️ $1\"' -
+  caci = !sh -c 'git add -A && git commit -m \"💚 $1\"' -
+  cabuild = !sh -c 'git add -A && git commit -m \"💚 $1\"' -
+  carevert = !sh -c 'git add -A && git commit -m \"⏪️ : $1\"' -
 
 [merge]
 
