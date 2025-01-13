@@ -132,5 +132,8 @@ brew install vagrant --cask
 # Add tmux
 brew install tmux
 
+# Add dbeaver tool
+brew install dbeaver-community --cask
+
 # Remove outdated versions from the cellar.
 brew cleanup
