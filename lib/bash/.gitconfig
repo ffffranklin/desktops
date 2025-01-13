@@ -81,7 +81,7 @@
   caperf = !sh -c 'git add -A && git commit -m \"⚡️ $1\"' -
   caci = !sh -c 'git add -A && git commit -m \"💚 $1\"' -
   cabuild = !sh -c 'git add -A && git commit -m \"💚 $1\"' -
-  carevert = !sh -c 'git add -A && git commit -m \"⏪️ : $1\"' -
+  carevert = !sh -c 'git add -A && git commit -m \"⏪️ $1\"' -
 
 [merge]
 
