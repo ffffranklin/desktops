@@ -135,5 +135,8 @@ brew install tmux
 # Add dbeaver tool
 brew install dbeaver-community --cask
 
+# Add fd as `find` replacement
+brew install fd
+
 # Remove outdated versions from the cellar.
 brew cleanup
