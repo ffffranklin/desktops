@@ -111,6 +111,9 @@ brew install rbenv ruby-build
 # Node Environment
 brew install nvm
 
+# Node package manager
+brew install pnpm
+
 # Diff so fancy (see gitconfig)
 brew install diff-so-fancy
 
