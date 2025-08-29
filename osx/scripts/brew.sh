@@ -141,5 +141,8 @@ brew install dbeaver-community --cask
 # Add fd as `find` replacement
 brew install fd
 
+# Add inkscape vector graphics editor
+brew install --cask inkscape
+
 # Remove outdated versions from the cellar.
 brew cleanup
