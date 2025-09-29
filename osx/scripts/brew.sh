@@ -144,5 +144,8 @@ brew install fd
 # Add inkscape vector graphics editor
 brew install --cask inkscape
 
+# Add podman for docker
+brew install podman
+
 # Remove outdated versions from the cellar.
 brew cleanup
