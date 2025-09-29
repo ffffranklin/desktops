@@ -146,6 +146,7 @@ brew install --cask inkscape
 
 # Add podman for docker
 brew install podman
+brew install --cask podman-desktop
 
 # Remove outdated versions from the cellar.
 brew cleanup
