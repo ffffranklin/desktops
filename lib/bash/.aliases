@@ -135,3 +135,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Strip exif data from photo
 alias strip_exif="magick mogrify -strip"
+
+# Podman docker alias
+alias docker="podman"
