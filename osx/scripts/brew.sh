@@ -144,9 +144,16 @@ brew install fd
 # Add inkscape vector graphics editor
 brew install --cask inkscape
 
-# Add podman for docker
+# Add podman (docker alternative)
 brew install podman
 brew install --cask podman-desktop
+
+# Add docker (for localstack)
+brew install docker
+brew install colima # to run docker deamon without docker desktop
+
+# Add localstack
+brew install localstack/tap/localstack-cli
 
 # Remove outdated versions from the cellar.
 brew cleanup
