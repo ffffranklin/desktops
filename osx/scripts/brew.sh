@@ -155,5 +155,8 @@ brew install colima # to run docker deamon without docker desktop
 # Add localstack
 brew install localstack/tap/localstack-cli
 
+# Add sdkman for Java
+brew install sdkman/tap/sdkman-cli
+
 # Remove outdated versions from the cellar.
 brew cleanup
