@@ -139,3 +139,6 @@ alias strip_exif="magick mogrify -strip"
 # Start docker via columa
 alias start_docker_with_colima="colima start"
 
+# create ssh agent session for github (or what ever else)
+alias sshcred="eval \"$(ssh-agent -s)\"; ssh-add ~/.ssh/id_ed25519"
+
