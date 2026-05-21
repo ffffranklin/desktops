@@ -39,7 +39,7 @@ brew install wget
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
-# Install more recent versions of some macOS tools. 
+# Install more recent versions of some macOS tools.
 # (doesnt work with options)
 # brew install vim --with-override-system-vi
 brew install grep
@@ -157,6 +157,12 @@ brew install localstack/tap/localstack-cli
 
 # Add sdkman for Java
 brew install sdkman/tap/sdkman-cli
+
+# Add pandoc
+brew install pandoc
+
+# Add yaml and json parser
+brew install yq jq
 
 # Remove outdated versions from the cellar.
 brew cleanup
