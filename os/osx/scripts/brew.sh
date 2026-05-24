@@ -109,7 +109,7 @@ brew install wordnet
 brew install rbenv ruby-build
 
 # Node Environment
-brew install nvm
+brew install fnm
 
 # Node package manager
 brew install pnpm
