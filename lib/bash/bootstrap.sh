@@ -5,6 +5,11 @@ cd "$(dirname "${BASH_SOURCE}")";
 function doIt() {
 	rsync --exclude ".git/" --exclude "to-be-ported" --exclude ".DS_Store" --exclude "bootstrap.sh" \
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
+
+	[ ! -d ~/.vim/swaps ] && mkdir ~/.vim/swaps
+	[ ! -d ~/.vim/backups ] && mkdir ~/.vim/backups
+	[ ! -d ~/.vim/undo ] && mkdir ~/.vim/undo
+
 	source ~/.bash_profile;
 }
 
