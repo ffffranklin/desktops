@@ -2,7 +2,7 @@
 export PATH="$HOME/bin:$PATH";
 
 # Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+if [[ "$OSTYPE" == "darwin" ]] && which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 	source "$(brew --prefix)/share/bash-completion/bash_completion";
 
 	# Add tab completion for git (https://superuser.com/a/300298)
@@ -60,13 +60,8 @@ fi
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
-# Add tab completion for `defaults read|write NSGlobalDomain`
-# You could just use `-g` instead, but I like being explicit
-complete -W "NSGlobalDomain" defaults;
-
-# Add `killall` tab completion for common apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
-
 # Init sdkman if not already init
-export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+if [[ "$OSTYPE" == "darwin" ]]; then
+    export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+    [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+fi
