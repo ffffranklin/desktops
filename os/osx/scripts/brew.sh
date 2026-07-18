@@ -164,5 +164,15 @@ brew install pandoc
 # Add yaml and json parser
 brew install yq jq
 
+# Add terraform
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+
+# Add minikube
+brew install minikube
+
+# Add kubectl
+brew install kubectl
+
 # Remove outdated versions from the cellar.
 brew cleanup
