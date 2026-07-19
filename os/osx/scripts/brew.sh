@@ -164,9 +164,8 @@ brew install pandoc
 # Add yaml and json parser
 brew install yq jq
 
-# Add terraform
-brew tap hashicorp/tap
-brew install hashicorp/tap/terraform
+# Add OpenTofu
+brew install opentofu
 
 # Add minikube
 brew install minikube
